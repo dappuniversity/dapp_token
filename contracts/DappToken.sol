@@ -4,7 +4,7 @@ contract DappToken {
     string  public name = "DApp Token";
     string  public symbol = "DAPP";
     string  public standard = "DApp Token v1.0";
-    uint8   public decimals = 18;
+    uint8   public decimals = 10;
     uint256 public totalSupply;
 
     mapping(address => uint256) public balanceOf;
@@ -23,8 +23,9 @@ contract DappToken {
     );
 
     function DappToken (uint256 _initialSupply) public {
-        balanceOf[msg.sender] = _initialSupply;
-        totalSupply = _initialSupply;
+        uint256 _scaledSupply = _initialSupply * (uint256(10) ** decimals);
+        balanceOf[msg.sender] = _scaledSupply;
+        totalSupply = _scaledSupply;
         // TODO: Trigger a transfer event when deploying
     }
 
