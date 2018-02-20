@@ -29,6 +29,7 @@ contract DappToken {
         // TODO: Trigger a transfer event when deploying
     }
 
+    // TODO: Handle scaled values
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balanceOf[msg.sender] >= _value);
 
@@ -40,6 +41,7 @@ contract DappToken {
         return true;
     }
 
+    // TODO: Handle scaled values
     function approve(address _spender, uint256 _value) public returns (bool success) {
         allowance[msg.sender][_spender] = _value;
 
@@ -48,6 +50,7 @@ contract DappToken {
         return true;
     }
 
+    // TODO: Handle scaled values
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
         require(_value <= balanceOf[_from]);
         require(_value <= allowance[_from][msg.sender]);
