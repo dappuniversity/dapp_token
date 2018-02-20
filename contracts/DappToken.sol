@@ -4,7 +4,7 @@ contract DappToken {
     string  public name = "DApp Token";
     string  public symbol = "DAPP";
     string  public standard = "DApp Token v1.0";
-    uint8   public decimals = 10;
+    uint8   public decimals = 18; // same value as wei
     uint256 public totalSupply;
 
     mapping(address => uint256) public balanceOf;
@@ -23,13 +23,12 @@ contract DappToken {
     );
 
     function DappToken (uint256 _initialSupply) public {
-        uint256 _scaledSupply = _initialSupply * (uint256(10) ** decimals);
-        balanceOf[msg.sender] = _scaledSupply;
-        totalSupply = _scaledSupply;
+        balanceOf[msg.sender] = _initialSupply;
+        totalSupply = _initialSupply;
+        // TODO: Handle fractional tokens
         // TODO: Trigger a transfer event when deploying
     }
 
-    // TODO: Handle scaled values
     function transfer(address _to, uint256 _value) public returns (bool success) {
         require(balanceOf[msg.sender] >= _value);
 
@@ -41,7 +40,6 @@ contract DappToken {
         return true;
     }
 
-    // TODO: Handle scaled values
     function approve(address _spender, uint256 _value) public returns (bool success) {
         allowance[msg.sender][_spender] = _value;
 
@@ -50,7 +48,6 @@ contract DappToken {
         return true;
     }
 
-    // TODO: Handle scaled values
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
         require(_value <= balanceOf[_from]);
         require(_value <= allowance[_from][msg.sender]);

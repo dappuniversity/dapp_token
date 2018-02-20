@@ -18,20 +18,19 @@ contract('DappToken', function(accounts) {
       assert.equal(standard, 'DApp Token v1.0', 'has the correct standard');
       return tokenInstance.decimals();
     }).then(function(decimals) {
-      assert.equal(decimals, 10, 'has the correct number of decimals');
+      assert.equal(decimals, 18, 'has the correct number of decimals');
     });
   });
 
   it('allocates the initial token supply upon deployment', function() {
     return DappToken.deployed().then(function(instance) {
       tokenInstance = instance;
-      scaledSupply = 10000000000000000;
       return tokenInstance.totalSupply();
     }).then(function(totalSupply) {
-      assert.equal(totalSupply.toNumber(), scaledSupply, 'sets the total supply to the initial supply');
+      assert.equal(totalSupply.toNumber(), 1000000, 'sets the total supply to the initial supply');
       return tokenInstance.balanceOf(accounts[0]);
     }).then(function(adminBalance) {
-      assert.equal(adminBalance.toNumber(), scaledSupply, 'it allocates the initial supply to the admin account');
+      assert.equal(adminBalance.toNumber(), 1000000, 'it allocates the initial supply to the admin account');
     });
   });
 
@@ -57,7 +56,7 @@ contract('DappToken', function(accounts) {
       assert.equal(receipt.logs[0].args._value, 250000, 'logs the transfer amount');
       return tokenInstance.balanceOf(accounts[0]);
     }).then(function(balance) {
-      assert.equal(balance.toNumber(), 9999999999750000, 'deducts the amount from the sending account');
+      assert.equal(balance.toNumber(), 750000, 'deducts the amount from the sending account');
       return tokenInstance.balanceOf(accounts[1]);
     }).then(function(balance) {
       assert.equal(balance.toNumber(), 250000, 'adds the amount to the receiving account');
