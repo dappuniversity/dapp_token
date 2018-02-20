@@ -1,0 +1,483 @@
+{
+  "contractName": "DappTokenSale",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenPrice",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_tokenContract",
+          "type": "address"
+        },
+        {
+          "name": "_tokenPrice",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6040516040806101eb83398101604052808051906020019091908051906020019091905050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555081600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600281905550505061011e806100cd6000396000f3006060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806355a373d614604e5780637ff9b5961460a0575b600080fd5b3415605857600080fd5b605e60c6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341560aa57600080fd5b60b060ec565b6040518082815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600254815600a165627a7a7230582019de9bec876e9c1380cf7654017e2a67e5926dd4b5ef0a5e8e7ab48fd4b9ca750029",
+  "deployedBytecode": "0x6060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806355a373d614604e5780637ff9b5961460a0575b600080fd5b3415605857600080fd5b605e60c6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341560aa57600080fd5b60b060ec565b6040518082815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600254815600a165627a7a7230582019de9bec876e9c1380cf7654017e2a67e5926dd4b5ef0a5e8e7ab48fd4b9ca750029",
+  "sourceMap": "53:403:1:-;;;268:186;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;363:10;355:5;;:18;;;;;;;;;;;;;;;;;;399:14;383:13;;:30;;;;;;;;;;;;;;;;;;436:11;423:10;:24;;;;268:186;;53:403;;;;;;",
+  "deployedSourceMap": "53:403:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;110:30;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;146:27;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;110:30;;;;;;;;;;;;;:::o;146:27::-;;;;:::o",
+  "source": "pragma solidity ^0.4.17;\n\nimport \"./DappToken.sol\";\n\ncontract DappTokenSale {\n    address          admin;\n    DappToken public tokenContract;\n    uint256   public tokenPrice;\n    // uint256   public tokensSold;\n\n\n    // event Sell(address buyer, uint256 amount);\n\n    function DappTokenSale(DappToken _tokenContract, uint256 _tokenPrice) public {\n        admin = msg.sender;\n        tokenContract = _tokenContract;\n        tokenPrice = _tokenPrice;\n    }\n}\n",
+  "sourcePath": "/Users/gregory/code/dapp_token/contracts/DappTokenSale.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/gregory/code/dapp_token/contracts/DappTokenSale.sol",
+      "exportedSymbols": {
+        "DappTokenSale": [
+          219
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".17"
+          ]
+        },
+        "id": 190,
+        "name": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 189,
+          "absolutePath": "/Users/gregory/code/dapp_token/contracts/DappToken.sol",
+          "file": "./DappToken.sol",
+          "scope": 220,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 191,
+        "name": "ImportDirective",
+        "src": "26:25:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            219
+          ],
+          "name": "DappTokenSale",
+          "scope": 220
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "admin",
+              "scope": 219,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "type": "address"
+                },
+                "id": 192,
+                "name": "ElementaryTypeName",
+                "src": "82:7:1"
+              }
+            ],
+            "id": 193,
+            "name": "VariableDeclaration",
+            "src": "82:22:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "tokenContract",
+              "scope": 219,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract DappToken",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "DappToken",
+                  "referencedDeclaration": 188,
+                  "type": "contract DappToken"
+                },
+                "id": 194,
+                "name": "UserDefinedTypeName",
+                "src": "110:9:1"
+              }
+            ],
+            "id": 195,
+            "name": "VariableDeclaration",
+            "src": "110:30:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "tokenPrice",
+              "scope": 219,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 196,
+                "name": "ElementaryTypeName",
+                "src": "146:7:1"
+              }
+            ],
+            "id": 197,
+            "name": "VariableDeclaration",
+            "src": "146:27:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "DappTokenSale",
+              "payable": false,
+              "scope": 219,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenContract",
+                      "scope": 218,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract DappToken",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "DappToken",
+                          "referencedDeclaration": 188,
+                          "type": "contract DappToken"
+                        },
+                        "id": 198,
+                        "name": "UserDefinedTypeName",
+                        "src": "291:9:1"
+                      }
+                    ],
+                    "id": 199,
+                    "name": "VariableDeclaration",
+                    "src": "291:24:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenPrice",
+                      "scope": 218,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 200,
+                        "name": "ElementaryTypeName",
+                        "src": "317:7:1"
+                      }
+                    ],
+                    "id": 201,
+                    "name": "VariableDeclaration",
+                    "src": "317:19:1"
+                  }
+                ],
+                "id": 202,
+                "name": "ParameterList",
+                "src": "290:47:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 203,
+                "name": "ParameterList",
+                "src": "345:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 193,
+                              "type": "address",
+                              "value": "admin"
+                            },
+                            "id": 204,
+                            "name": "Identifier",
+                            "src": "355:5:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 231,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 205,
+                                "name": "Identifier",
+                                "src": "363:3:1"
+                              }
+                            ],
+                            "id": 206,
+                            "name": "MemberAccess",
+                            "src": "363:10:1"
+                          }
+                        ],
+                        "id": 207,
+                        "name": "Assignment",
+                        "src": "355:18:1"
+                      }
+                    ],
+                    "id": 208,
+                    "name": "ExpressionStatement",
+                    "src": "355:18:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract DappToken"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 195,
+                              "type": "contract DappToken",
+                              "value": "tokenContract"
+                            },
+                            "id": 209,
+                            "name": "Identifier",
+                            "src": "383:13:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 199,
+                              "type": "contract DappToken",
+                              "value": "_tokenContract"
+                            },
+                            "id": 210,
+                            "name": "Identifier",
+                            "src": "399:14:1"
+                          }
+                        ],
+                        "id": 211,
+                        "name": "Assignment",
+                        "src": "383:30:1"
+                      }
+                    ],
+                    "id": 212,
+                    "name": "ExpressionStatement",
+                    "src": "383:30:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 197,
+                              "type": "uint256",
+                              "value": "tokenPrice"
+                            },
+                            "id": 213,
+                            "name": "Identifier",
+                            "src": "423:10:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 201,
+                              "type": "uint256",
+                              "value": "_tokenPrice"
+                            },
+                            "id": 214,
+                            "name": "Identifier",
+                            "src": "436:11:1"
+                          }
+                        ],
+                        "id": 215,
+                        "name": "Assignment",
+                        "src": "423:24:1"
+                      }
+                    ],
+                    "id": 216,
+                    "name": "ExpressionStatement",
+                    "src": "423:24:1"
+                  }
+                ],
+                "id": 217,
+                "name": "Block",
+                "src": "345:109:1"
+              }
+            ],
+            "id": 218,
+            "name": "FunctionDefinition",
+            "src": "268:186:1"
+          }
+        ],
+        "id": 219,
+        "name": "ContractDefinition",
+        "src": "53:403:1"
+      }
+    ],
+    "id": 220,
+    "name": "SourceUnit",
+    "src": "0:457:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x9d084404b8558604a1e69b9782a6f421870bd907"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-02-20T17:30:40.299Z"
+}
