@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>DApp Token Sale</title>
+    <title>DApp Token ICO Sale</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,10 +21,38 @@
     <div class="container" style="width: 650px;">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="text-center">DAPP TOKEN SALE</h1>
+          <h1 class="text-center">DAPP TOKEN ICO SALE</h1>
           <hr/>
           <br/>
-          <p id="accountAddress" class="text-center"></p>
+          <div class="text-center">
+            <p>
+              Introducting "DApp Token" (DAPP)!
+              Token price is 0.001 Ether. You currently have <span class="dapp-balance">0</span>&nbsp;DAPP.
+            </p>
+            <br />
+            <form onSubmit="App.castVote(); return false;" class="" role="form">
+              <div class="form-group" style="display:inline;">
+                <div class="input-group">
+                  <input class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
+                  </input>
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-lg">Buy Tokens</button>
+                  </span>
+                </div>
+              </div>
+            </form>
+            <br />
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                <span class="sr-only">20% Complete</span>
+              </div>
+            </div>
+            <p>0 / 1,000,000 tokens sold</p>
+            <p></p>
+            <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<b>NOTICE:</b> This token sale uses the Ropsten Test Network with fake ether. Use a browser extension like Metamask to connect to the test network and participate in the ICO.</div>
+            <hr>
+            <p id="accountAddress"></p>
+          </div>
 
 <!--           <div id="loader">
             <p class="text-center">Loading...</p>
