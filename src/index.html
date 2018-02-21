@@ -24,16 +24,19 @@
           <h1 class="text-center">DAPP TOKEN ICO SALE</h1>
           <hr/>
           <br/>
-          <div class="text-center">
+          <div id="loader">
+            <p class="text-center">Loading...</p>
+          </div>
+          <div id="content" class="text-center" style="display: none;">
             <p>
               Introducting "DApp Token" (DAPP)!
               Token price is 0.001 Ether. You currently have <span class="dapp-balance">0</span>&nbsp;DAPP.
             </p>
             <br />
-            <form onSubmit="App.castVote(); return false;" class="" role="form">
+            <form onSubmit="App.buyTokens(); return false;" class="" role="form">
               <div class="form-group" style="display:inline;">
                 <div class="input-group">
-                  <input class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
+                  <input id="numberOfTokens" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
                   </input>
                   <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary btn-lg">Buy Tokens</button>
@@ -53,34 +56,6 @@
             <hr>
             <p id="accountAddress"></p>
           </div>
-
-<!--           <div id="loader">
-            <p class="text-center">Loading...</p>
-          </div>
-          <div id="content" style="display: none;">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Votes</th>
-                </tr>
-              </thead>
-              <tbody id="candidatesResults">
-              </tbody>
-            </table>
-            <hr/>
-            <form onSubmit="App.castVote(); return false;">
-              <div class="form-group">
-                <label for="candidatesSelect">Select Candidate</label>
-                <select class="form-control" id="candidatesSelect">
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Vote</button>
-              <hr />
-            </form>
-            <p id="accountAddress" class="text-center"></p>
-          </div> -->
         </div>
       </div>
     </div>
