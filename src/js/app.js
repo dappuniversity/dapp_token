@@ -10,7 +10,6 @@ App = {
   },
 
   initWeb3: function() {
-    // TODO: refactor conditional
     if (typeof web3 !== 'undefined') {
       // If a web3 instance is already provided by Meta Mask.
       App.web3Provider = web3.currentProvider;
@@ -20,11 +19,12 @@ App = {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
       web3 = new Web3(App.web3Provider);
     }
-    // return App.initContract();
+
+    App.initContracts();
 
     // Load account data
     web3.eth.getCoinbase(function(err, account) {
-      console.log("account", account)
+      console.log("Account address:", account)
       if (err === null) {
         App.account = account;
         $("#accountAddress").html("Your Account: " + account);
@@ -32,14 +32,23 @@ App = {
     });
   },
 
-  initContract: function() {
-    $.getJSON("Election.json", function(election) {
-      // Instantiate a new truffle contract from the artifact
-      App.contracts.Election = TruffleContract(election);
-      // Connect provider to interact with contract
-      App.contracts.Election.setProvider(App.web3Provider);
-      App.listenForEvents();
-      return App.render()
+  initContracts: function() {
+    $.getJSON("DappTokenSale.json", function(dappTokenSale) {
+      App.contracts.DappTokenSale = TruffleContract(dappTokenSale);
+      App.contracts.DappTokenSale.setProvider(App.web3Provider);
+      App.contracts.DappTokenSale.deployed().then(function(dappTokenSale) {
+        console.log("Dapp Token Sale Address:", dappTokenSale.address);
+      });
+    }).done(function() {
+      $.getJSON("DappToken.json", function(dappToken) {
+        App.contracts.DappToken = TruffleContract(dappToken);
+        App.contracts.DappToken.setProvider(App.web3Provider);
+        App.contracts.DappToken.deployed().then(function(dappToken) {
+          console.log("Dapp Token Address:", dappToken.address);
+        });
+        // App.listenForEvents();
+        // return App.render()
+      });
     });
   },
 
