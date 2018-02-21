@@ -3,8 +3,9 @@ App = {
   contracts: {},
   account: '0x0',
   loading: false,
-  hasVoted: false,
+  tokensAvailable: 750000,
   tokenPrice: 1000000000000000, // in wei
+  tokensSold: 0,
 
   init: function() {
     return App.initWeb3();
@@ -67,7 +68,9 @@ App = {
     }
     App.loading = true;
 
-    var electionInstance;
+    var dappTokenSaleInstance;
+    var dappTokenInstance;
+
     var loader = $("#loader");
     var content = $("#content");
 
@@ -82,47 +85,36 @@ App = {
       }
     });
 
-    // Load contract data
-    // App.contracts.DappTokenSale.deployed().then(function(instance) {
-    //   electionInstance = instance;
-    //   return electionInstance.candidatesCount();
-    // }).then(function(candidatesCount) {
-    //   console.log("candidates count", candidatesCount.toNumber())
-    //   var candidatesResults = $("#candidatesResults");
-    //   candidatesResults.empty();
+    // Load token sale contract
+    App.contracts.DappTokenSale.deployed().then(function(instance) {
+      dappTokenSaleInstance = instance;
+      return dappTokenSaleInstance.tokenPrice();
+    }).then(function(tokenPrice) {
+      App.tokenPrice = tokenPrice;
+      $('.token-price').html(web3.fromWei(App.tokenPrice, "ether").toNumber());
+      return dappTokenSaleInstance.tokensSold();
+    }).then(function(tokensSold) {
+      App.tokensSold = tokensSold.toNumber();
+      $('.tokens-sold').html(App.tokensSold);
+      $('.tokens-available').html(App.tokensAvailable);
+      var progressPercent = Math.ceil(App.tokensSold / App.tokensAvailable);
+      $('#progress').css('width', progressPercent + '%');
 
-    //   var candidatesSelect = $('#candidatesSelect');
-    //   candidatesSelect.empty();
+      // Load token contract
+      App.contracts.DappToken.deployed().then(function(instance) {
+        dappTokenInstance = instance;
+        return dappTokenInstance.balanceOf(App.account);
+      }).then(function(balance) {
+        $('.dapp-balance').html(balance.toNumber())
+      });
 
-    //   for (var i = 1; i <= candidatesCount; i++) {
-    //     electionInstance.candidates(i).then(function(candidate) {
-    //       var id = candidate[0];
-    //       var name = candidate[1];
-    //       var voteCount = candidate[2];
+      App.loading = false;
+      loader.hide();
+      content.show();
 
-    //       // Render candidate Result
-    //       var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
-    //       candidatesResults.append(candidateTemplate);
-
-    //       // Render candidate ballot option
-    //       var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
-    //       candidatesSelect.append(candidateOption);
-    //     });
-    //   }
-    //   return electionInstance.voters(App.account);
-    // }).then(function(hasVoted) {
-    //   // Do not allow a user to vote
-    //   if(hasVoted) {
-    //     $('form').hide();
-    //   }
-    //   // loader.hide();
-    //   // content.show();
-    // }).catch(function(error) {
-    //   console.warn(error);
-    // });
-    App.loading = false;
-    loader.hide();
-    content.show();
+    }).catch(function(error) {
+      console.warn(error);
+    });
   },
 
   buyTokens: function() {

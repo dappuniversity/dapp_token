@@ -30,7 +30,7 @@
           <div id="content" class="text-center" style="display: none;">
             <p>
               Introducting "DApp Token" (DAPP)!
-              Token price is 0.001 Ether. You currently have <span class="dapp-balance">0</span>&nbsp;DAPP.
+              Token price is <span class="token-price"></span> Ether. You currently have <span class="dapp-balance">0</span>&nbsp;DAPP.
             </p>
             <br />
             <form onSubmit="App.buyTokens(); return false;" class="" role="form">
@@ -46,11 +46,10 @@
             </form>
             <br />
             <div class="progress">
-              <div class="progress-bar progress-bar-striped active" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                <span class="sr-only">20% Complete</span>
+              <div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100">
               </div>
             </div>
-            <p>200,000 / 1,000,000 tokens sold</p>
+            <p><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</p>
             <p></p>
             <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<b>NOTICE:</b> This token sale uses the Ropsten Test Network with fake ether. Use a browser extension like Metamask to connect to the test network and participate in the ICO.</div>
             <hr>
