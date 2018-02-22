@@ -118,6 +118,8 @@ App = {
   },
 
   buyTokens: function() {
+    $("#content").hide();
+    $("#loader").show();
     var numberOfTokens = $('#numberOfTokens').val();
     console.log("buying tokens...", numberOfTokens);
     App.contracts.DappTokenSale.deployed().then(function(instance) {
@@ -129,8 +131,6 @@ App = {
     }).then(function(result) {
       console.log("Bought tokens. Waiting for events...");
       // Wait for events
-      $("#content").hide();
-      $("#loader").show();
     }).catch(function(err) {
       console.error(err);
     });
