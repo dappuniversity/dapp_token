@@ -130,6 +130,7 @@ App = {
       });
     }).then(function(result) {
       console.log("Bought tokens. Waiting for events...");
+      $('form').trigger('reset') // reset number of tokens
       // Wait for events
     }).catch(function(err) {
       console.error(err);
