@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>DApp Token ICO Sale</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="text-center">DAPP TOKEN ICO SALE</h1>
+          <hr/>
+          <br/>
+          <div id="loader">
+            <p class="text-center">Loading...</p>
+          </div>
+          <div id="content" class="text-center" style="display: none;">
+            <p>
+              Introducting "DApp Token" (DAPP)!
+              Token price is <span class="token-price"></span> Ether. You currently have <span class="dapp-balance">0</span>&nbsp;DAPP.
+            </p>
+            <br />
+            <form onSubmit="App.buyTokens(); return false;" class="" role="form">
+              <div class="form-group" style="display:inline;">
+                <div class="input-group">
+                  <input id="numberOfTokens" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]">
+                  </input>
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-lg">Buy Tokens</button>
+                  </span>
+                </div>
+              </div>
+            </form>
+            <br />
+            <div class="progress">
+              <div id="progress" class="progress-bar progress-bar-striped active" aria-valuemin="0" aria-valuemax="100">
+              </div>
+            </div>
+            <p><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</p>
+            <p></p>
+            <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<b>NOTICE:</b> This token sale uses the Ropsten Test Network with fake ether. Use a browser extension like Metamask to connect to the test network and participate in the ICO.</div>
+            <hr>
+            <p id="accountAddress"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
